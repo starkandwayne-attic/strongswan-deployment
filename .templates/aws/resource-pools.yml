@@ -9,7 +9,7 @@ resource_pools:
     cloud_properties:
       instance_type: m3.medium
       availability_zone: (( grab meta.availability_zone ))
-      advertised_instance_routes: (( grab meta.advertised_routes ))
+      advertised_routes: (( grab meta.advertised_routes ))
 
 compilation:
   workers: 3

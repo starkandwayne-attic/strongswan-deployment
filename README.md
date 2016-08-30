@@ -29,7 +29,7 @@ Routing
 
 Effectively using strongswan requires custom routing table entries in your IaaS.
 For AWS, this is handled using the BOSH CPI (v58 or greater required). When BOSH
-creates the strongswan VPN, it will use the `advertised_instance_routes` cloud property
+creates the strongswan VPN, it will use the `advertised_routes` cloud property
 to update AWS Routing tables to send traffic to your desired destinations through
 the strongswan VM. Since AWS Routing tables use instance/newtork interface IDs for
 routing, you do not need static IPs. Specify the routes using `meta.advertised_routes`
@@ -47,6 +47,22 @@ meta:
 For other IaaS's (bosh-lite, vsphere), you will need to manually configure routing,
 and as such, you will likely need static IPs.
 
+Tunnels
+======================================
+
+To specify which tunnels the strongswan instance should configure, you must
+set `properties.strongswan.tunnels` in a format that resmebles the following:
+
+```
+properties:
+  strongswan:
+    tunnels:
+    - ip: IP.OF.REMOTE.ENDPOINT
+      secret: <PSK for this tunnel>
+      subnet: <CIDR of the remote network, to route to>
+```
+
+Other
 ======================================
 
 For more information, check out the [Genesis][1] repo, or `genesis help`.
