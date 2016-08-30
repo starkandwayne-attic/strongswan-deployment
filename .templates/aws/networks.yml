@@ -1,11 +1,18 @@
 ---
+meta:
+  eips: (( param "Specify an array of Elastic IPs to attach to strongswan" ))
+
 networks:
 - name: strongswan
   type: manual
   subnets: (( param "Specify your strongswan subnet" ))
+- name: vip
+  type: vip
 
 jobs:
 - name: strongswan
   networks:
   - name: strongswan
-    static_ips: (( static_ips 0 ))
+    default: [dns, gateway]
+  - name: vip
+    static_ips: (( grab meta.eip ))
