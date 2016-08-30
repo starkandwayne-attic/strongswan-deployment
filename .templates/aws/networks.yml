@@ -1,0 +1,11 @@
+---
+networks:
+- name: strongswan
+  type: manual
+  subnets: (( param "Specify your strongswan subnet" ))
+
+jobs:
+- name: strongswan
+  networks:
+  - name: strongswan
+    static_ips: (( static_ips 0 ))

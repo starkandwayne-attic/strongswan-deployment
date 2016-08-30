@@ -1,0 +1,15 @@
+---
+networks:
+- name: strongswan
+  type: manual
+  subnets:
+  - range: 10.244.38.0/24
+    gateway: 10.244.38.1
+    static:
+    - 10.244.38.2 - 10.244.38.60
+
+jobs:
+- name: strongswan
+  networks:
+  - name: strongswan
+    static_ips: (( static_ips 0 ))

@@ -1,0 +1,5 @@
+---
+properties:
+  strongswan:
+    local_subnet: (( param "What network (in CIDR notation) should strongswan advertise to the remote side of the tunnel?" ))
+    tunnels: (( param "Enter the ip/subnet/PSK of each tunnel to configure in an array of maps" ))

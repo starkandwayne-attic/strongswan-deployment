@@ -1,0 +1,15 @@
+---
+resource_pools:
+- name: strongswan
+  network: strongswan
+  cloud_properties: {}
+  stemcell: (( grab meta.stemcell ))
+
+compilation:
+  workers: 2
+  network: strongswan
+  cloud_properties: {}
+
+jobs:
+- name: strongswan
+  resource_pool: strongswan

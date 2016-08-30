@@ -1,0 +1,23 @@
+---
+meta:
+  availability_zone: (( param "What availability zone should your strongswan VMs be in?" ))
+resource_pools:
+  - name: strongswan
+    network: strongswan
+    stemcell: (( grab meta.stemcell ))
+    cloud_properties:
+      instance_type: m3.medium
+      availability_zone: (( grab meta.availability_zone ))
+      advertised_instance_routes: (( param "What route should be advertised from the remote end of the tunnel to VMs in this VPC? Expects an array of maps with table_id, and destination (cidr)" ))
+
+compilation:
+  workers: 3
+  network: strongswan
+  reuse_compilation_vms: true
+  cloud_properties:
+    instance_type: c4.large
+    availability_zone: (( grab meta.availability_zone ))
+
+jobs:
+  - name: strongswan
+    resource_pool: strongswan

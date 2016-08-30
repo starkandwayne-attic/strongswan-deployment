@@ -1,0 +1,13 @@
+---
+jobs:
+- name: strongswan
+  templates:
+  - name: strongswan
+    release: strongswan
+  - name: toolbelt-quick
+    release: toolbelt
+  - name: toolbelt
+    release: toolbelt
+  instances: 1
+  resource_pool: (( param "Specify the resource pool for strongswan" ))
+  networks: (( param "Specify the network definitions for strongswan" ))
