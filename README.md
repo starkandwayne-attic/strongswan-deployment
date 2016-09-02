@@ -28,7 +28,7 @@ Routing
 ======================================
 
 Effectively using strongswan requires custom routing table entries in your IaaS.
-For AWS, this is handled using the BOSH CPI (v58 or greater required). When BOSH
+For AWS, this is handled using the BOSH CPI (v59 or greater required). When BOSH
 creates the strongswan VPN, it will use the `advertised_routes` cloud property
 to update AWS Routing tables to send traffic to your desired destinations through
 the strongswan VM. Since AWS Routing tables use instance/newtork interface IDs for
