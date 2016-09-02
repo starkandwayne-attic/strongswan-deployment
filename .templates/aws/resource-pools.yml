@@ -10,6 +10,7 @@ resource_pools:
       instance_type: m3.medium
       availability_zone: (( grab meta.availability_zone ))
       advertised_routes: (( grab meta.advertised_routes ))
+      source_des_check: false # needed for routed traffic to be allowed through this VM on AWS
 
 compilation:
   workers: 3
